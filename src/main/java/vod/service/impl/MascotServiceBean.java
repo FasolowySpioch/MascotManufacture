@@ -1,6 +1,7 @@
 package vod.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import vod.model.Designer;
 import vod.model.Mascot;
@@ -13,7 +14,8 @@ import vod.service.MascotService;
 import java.util.List;
 import java.util.logging.Logger;
 
-@Component
+@Component("mascotDao")
+@Primary
 public class MascotServiceBean implements MascotService {
     private static final Logger log = Logger.getLogger(CompanyService.class.getName());
     @Autowired
