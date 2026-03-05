@@ -1,5 +1,7 @@
 package vod;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import vod.model.Company;
@@ -7,14 +9,12 @@ import vod.service.CompanyService;
 
 import java.util.List;
 
-
+@SpringBootApplication
 public class VodServiceMain {
     public static void main(String[] args){
-        System.out.println("Let's find all companies!");
-        ApplicationContext context = new AnnotationConfigApplicationContext("vod");
-        CompanyService service = context.getBean(CompanyService.class);
-        List<Company> companies = service.getAllCompanies();
-        System.out.println(companies.size() + " companies found:");
-        companies.forEach(System.out::println);
+        SpringApplication.run(VodServiceMain.class, args);
+       // VodComponent component;
+
+        //component.
     }
 }
