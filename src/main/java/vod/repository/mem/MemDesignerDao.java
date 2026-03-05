@@ -1,10 +1,12 @@
 package vod.repository.mem;
 
+import org.springframework.stereotype.Component;
 import vod.model.Designer;
 import vod.repository.DesignerDao;
 
 import java.util.List;
 
+@Component
 public class MemDesignerDao implements DesignerDao {
     @Override
     public List<Designer> findAll(){ return SampleData.designers; }
