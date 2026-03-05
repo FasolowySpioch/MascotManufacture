@@ -1,5 +1,7 @@
 package vod.service;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import vod.model.Company;
 import vod.model.Designer;
 import vod.model.Mascot;
@@ -17,21 +19,10 @@ import java.util.List;
 public class VodServiceMain {
     public static void main(String[] args){
         System.out.println("Let's find all companies!");
-        MascotDao mascotDao = new MemMascotDao();
-        CompanyDao companyDao = new MemCompanyDao();
-        DesignerDao designerDao = new MemDesignerDao();
-
-        CompanyService serviceCompany = new CompanyServiceBean(companyDao, mascotDao);
-        List<Company> companies = serviceCompany.getAllCompanies();
-
+        ApplicationContext context = new AnnotationConfigApplicationContext("vod");
+        CompanyService service = context.getBean(CompanyService.class);
+        List<Company> companies = service.getAllCompanies();
         System.out.println(companies.size() + " companies found:");
         companies.forEach(System.out::println);
-
-        MascotService serviceMascots = new MascotServiceBean(designerDao, mascotDao);
-        System.out.println("Let's find all mascots!");
-
-        List<Mascot> mascots = serviceMascots.getAllMascots();
-        System.out.println(mascots.size() + " mascots found:");
-        mascots.forEach(System.out::println);
     }
 }
