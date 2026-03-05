@@ -1,20 +1,12 @@
-package vod.service;
+package vod;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import vod.model.Company;
-import vod.model.Designer;
-import vod.model.Mascot;
-import vod.repository.CompanyDao;
-import vod.repository.DesignerDao;
-import vod.repository.MascotDao;
-import vod.repository.mem.MemCompanyDao;
-import vod.repository.mem.MemDesignerDao;
-import vod.repository.mem.MemMascotDao;
-import vod.service.impl.CompanyServiceBean;
-import vod.service.impl.MascotServiceBean;
+import vod.service.CompanyService;
 
 import java.util.List;
+
 
 public class VodServiceMain {
     public static void main(String[] args){
