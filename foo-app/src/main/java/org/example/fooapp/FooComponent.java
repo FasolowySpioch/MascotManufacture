@@ -1,0 +1,11 @@
+package org.example.fooapp;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+import vod.service.CompanyService;
+
+@Component
+@Slf4j
+public class FooComponent {
+    public FooComponent(String bar) { log.info("constructing foo component using string {}", bar);}
+}
