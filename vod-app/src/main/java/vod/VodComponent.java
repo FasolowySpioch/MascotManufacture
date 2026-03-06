@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import vod.model.Company;
 import vod.service.CompanyService;
@@ -38,4 +39,7 @@ public class VodComponent implements CommandLineRunner, ApplicationListener<Cont
         log.info("{} companies found. ", companies.size());
         companies.forEach(company -> log.info("{}", company));
     }
+
+    @EventListener
+    public void eventListener(ContextRefreshedEvent event) {log.info("on context refreshed (another method)");}
 }

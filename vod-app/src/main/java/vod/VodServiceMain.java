@@ -13,8 +13,5 @@ import java.util.List;
 public class VodServiceMain {
     public static void main(String[] args){
         SpringApplication.run(VodServiceMain.class, args);
-       // VodComponent component;
-
-        //component.
     }
 }
