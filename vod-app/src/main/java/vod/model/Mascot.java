@@ -1,5 +1,7 @@
 package vod.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,7 @@ public class Mascot {
     private String name;
     private String photo; //What it is, dragon, bear etc.
     private Designer designer; // 1 -> N
+    @JsonIgnore
     private List<Company> companyArrayList = new ArrayList<>(); //N - N
     private float rating;
     public Mascot(int i, String n, String t, Designer d, float r){

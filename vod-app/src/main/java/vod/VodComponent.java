@@ -11,6 +11,7 @@ import vod.model.Company;
 import vod.service.CompanyService;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 @Component
@@ -23,6 +24,7 @@ public class VodComponent implements CommandLineRunner, ApplicationListener<Cont
     @PostConstruct
     public void init(){
         List<Company> companies = cs.getAllCompanies();
+        companies.sort(Comparator.comparing(Company::getId));
         log.info("{} companies found. ", companies.size());
         companies.forEach(company -> log.info("{}", company));
     }
@@ -36,6 +38,7 @@ public class VodComponent implements CommandLineRunner, ApplicationListener<Cont
     public void onApplicationEvent(ContextRefreshedEvent event) {
         log.info("on context refreshed");
         List<Company> companies = cs.getAllCompanies();
+        companies.sort(Comparator.comparing(Company::getId));
         log.info("{} companies found. ", companies.size());
         companies.forEach(company -> log.info("{}", company));
     }

@@ -1,5 +1,7 @@
 package vod.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +9,7 @@ public class Company {
     private int id;
     private String name;
     private String logoUrl;
+    @JsonIgnore
     private List<Mascot> mascotList = new ArrayList<>();
 
     public Company() {}
