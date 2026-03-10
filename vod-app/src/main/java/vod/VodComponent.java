@@ -8,7 +8,9 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import vod.model.Company;
+import vod.model.Mascot;
 import vod.service.CompanyService;
+import vod.service.MascotService;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -18,8 +20,11 @@ import java.util.List;
 @Slf4j
 public class VodComponent implements CommandLineRunner, ApplicationListener<ContextRefreshedEvent> {
     private final CompanyService cs;
+    private final MascotService ms;
 
-    public VodComponent(CompanyService cs) { this.cs = cs; }
+
+
+    public VodComponent(CompanyService cs, MascotService ms) { this.cs = cs; this.ms = ms; }
 
     @PostConstruct
     public void init(){

@@ -1,0 +1,8 @@
+### get all companies
+GET http://localhost:8080/webapi/companies
+
+### get companies by id
+GET http://localhost:8080/webapi/companies/1
+Accept: application/xml
+
+### get

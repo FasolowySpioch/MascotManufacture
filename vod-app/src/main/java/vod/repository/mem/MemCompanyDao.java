@@ -1,6 +1,7 @@
 package vod.repository.mem;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import vod.model.Company;
 import vod.model.Mascot;
 import vod.repository.CompanyDao;
@@ -8,7 +9,7 @@ import vod.repository.CompanyDao;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Repository("companyDao")
 public class MemCompanyDao implements CompanyDao {
     @Override
     public List<Company> findAll(){ return SampleData.companies; }
