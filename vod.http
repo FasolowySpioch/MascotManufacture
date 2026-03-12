@@ -6,3 +6,4 @@ GET http://localhost:8080/webapi/companies/1
 Accept: application/xml
 
 ### get
+GET http://localhost:8080/webapi/mascots/1/companies
