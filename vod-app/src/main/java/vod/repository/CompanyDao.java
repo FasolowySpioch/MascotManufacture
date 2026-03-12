@@ -9,4 +9,5 @@ public interface CompanyDao {
     List<Company> findAll();
     Company findById(int id);
     List<Company> findByMascot(Mascot m);
+    Company save(Company c);
 }

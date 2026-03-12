@@ -2,6 +2,7 @@ package vod.web.rest;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vod.model.Company;
@@ -20,8 +21,13 @@ public class CompanyRest {
     private final MascotService mascotService;
 
     @GetMapping("/companies")
-    List<Company> getCompanies(){
+    List<Company> getCompanies(@RequestParam(value = "phrase", required = false) String phrase,
+                               @RequestHeader(value = "custom-header", required = false) String customHeader,
+                               @CookieValue(value = "some-cookie", required = false) String someCookie) {
         log.info("about to fetch companies list");
+        log.info("phrase param: {}", phrase);
+        log.info("custom header param: {}", customHeader);
+        log.info("some cookie value: {}", someCookie);
         List<Company> companies = companyService.getAllCompanies();
         log.info("{} companies found. ", companies.size());
         return companies;
@@ -48,5 +54,14 @@ public class CompanyRest {
             return ResponseEntity.ok(ls);
         }
         else return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/companies")
+    ResponseEntity<Company> addCompany(@RequestBody Company c){
+        log.info("about to add new company {}", c);
+        //TODO:VALIDATE
+        c = companyService.addCompany(c);
+        log.info("new company added {}: ", c);
+        return ResponseEntity.status(HttpStatus.CREATED).body(c);
     }
 }

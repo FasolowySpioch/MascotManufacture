@@ -58,4 +58,9 @@ public class CompanyServiceBean implements CompanyService {
         log.info("searching mascots by company");
         return mascotDao.findByCompany(c);
     }
+    @Override
+    public Company addCompany(Company c){
+        log.info("adding new company");
+        return companyDao.save(c);
+    }
 }
