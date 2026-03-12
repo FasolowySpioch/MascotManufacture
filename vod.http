@@ -16,7 +16,7 @@ Cookie: some-cookie=some-value
 ### create new company
 POST http://localhost:8080/webapi/companies
 Content-Type: application/json
-
+Accept-Language: pl
 {
   "name": "SampleCompanyName",
   "logoUrl": "https://imgs.search.brave.com/qTfuCMXCtl5AczPIqQL_QshuCPsyi1TSB_QOV_sWQ8Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuYm9yZWRwYW5k/YS5jb20vYmxvZy93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyNC8x/Mi8yMi02NzRmMWJi/MDNhYjI1X183MDAu/anBn"

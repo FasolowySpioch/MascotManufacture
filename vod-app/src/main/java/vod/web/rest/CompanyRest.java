@@ -1,16 +1,23 @@
 package vod.web.rest;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.MessageSource;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.LocaleResolver;
 import vod.model.Company;
 import vod.model.Mascot;
 import vod.service.CompanyService;
 import vod.service.MascotService;
 
 import java.util.List;
+import java.util.Locale;
 
 @RequiredArgsConstructor
 @RestController
@@ -19,6 +26,8 @@ import java.util.List;
 public class CompanyRest {
     private final CompanyService companyService;
     private final MascotService mascotService;
+    private final MessageSource messageSource;
+    private final LocaleResolver localeResolver;
 
     @GetMapping("/companies")
     List<Company> getCompanies(@RequestParam(value = "phrase", required = false) String phrase,
@@ -57,9 +66,16 @@ public class CompanyRest {
     }
 
     @PostMapping("/companies")
-    ResponseEntity<Company> addCompany(@RequestBody Company c){
+    ResponseEntity<?> addCompany(@Validated @RequestBody Company c, Errors e, HttpServletRequest request){
         log.info("about to add new company {}", c);
-        //TODO:VALIDATE
+
+        if(e.hasErrors()){
+            Locale locale = localeResolver.resolveLocale(request);
+            String em = e.getAllErrors().stream().map(oe->messageSource.getMessage(oe.getCode(), new Object[0], locale)).reduce(
+                    "errors:\n", (accu, oe)->accu + oe + "\n");
+            return ResponseEntity.badRequest().build();
+        }
+
         c = companyService.addCompany(c);
         log.info("new company added {}: ", c);
         return ResponseEntity.status(HttpStatus.CREATED).body(c);
