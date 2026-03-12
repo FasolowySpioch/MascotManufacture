@@ -1,6 +1,7 @@
 package vod.web.rest;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.LocaleResolver;
 import vod.model.Company;
@@ -28,7 +30,12 @@ public class CompanyRest {
     private final MascotService mascotService;
     private final MessageSource messageSource;
     private final LocaleResolver localeResolver;
+    private final CompanyValidator companyValidator;
 
+    @InitBinder
+    void initBinder(WebDataBinder binder) {
+        binder.addValidators(companyValidator);
+    }
     @GetMapping("/companies")
     List<Company> getCompanies(@RequestParam(value = "phrase", required = false) String phrase,
                                @RequestHeader(value = "custom-header", required = false) String customHeader,
@@ -66,14 +73,21 @@ public class CompanyRest {
     }
 
     @PostMapping("/companies")
-    ResponseEntity<?> addCompany(@Validated @RequestBody Company c, Errors e, HttpServletRequest request){
+    ResponseEntity<?> addCompany(@Valid @RequestBody Company c, Errors e, HttpServletRequest request){
         log.info("about to add new company {}", c);
 
         if(e.hasErrors()){
             Locale locale = localeResolver.resolveLocale(request);
-            String em = e.getAllErrors().stream().map(oe->messageSource.getMessage(oe.getCode(), new Object[0], locale)).reduce(
-                    "errors:\n", (accu, oe)->accu + oe + "\n");
-            return ResponseEntity.badRequest().build();
+
+            String em = e.getAllErrors().stream()
+                    .map(oe -> messageSource.getMessage(
+                            oe.getCode(),
+                            oe.getArguments(),
+                            oe.getDefaultMessage(),
+                            locale))
+                    .reduce("errors:\n", (acc, msg) -> acc + msg + "\n");
+
+            return ResponseEntity.badRequest().body(em);
         }
 
         c = companyService.addCompany(c);

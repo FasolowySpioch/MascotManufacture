@@ -17,7 +17,29 @@ Cookie: some-cookie=some-value
 POST http://localhost:8080/webapi/companies
 Content-Type: application/json
 Accept-Language: pl
+
 {
-  "name": "SampleCompanyName",
+  "name": "sample",
   "logoUrl": "https://imgs.search.brave.com/qTfuCMXCtl5AczPIqQL_QshuCPsyi1TSB_QOV_sWQ8Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuYm9yZWRwYW5k/YS5jb20vYmxvZy93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyNC8x/Mi8yMi02NzRmMWJi/MDNhYjI1X183MDAu/anBn"
+}
+
+###MOVIES SECTION
+### get all movies
+GET http://localhost:8080/webapi/mascots
+
+### get mascots by id
+GET http://localhost:8080/webapi/mascots/1
+
+### get mascots by companies
+GET http://localhost:8080/webapi/companies/1/mascots
+
+### create new mascot
+POST http://localhost:8080/webapi/mascot
+Content-Type: application/json
+
+{
+"name": "Sample",
+"photo": "https://miokiishop.com/cdn/shop/files/356827384_812963570457040_7027744008986053335_n_1946x.jpg?v=1687824844",
+"designerId": 1,
+"rating": 5
 }

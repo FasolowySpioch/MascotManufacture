@@ -11,4 +11,5 @@ public interface CompanyService {
     List<Company> getCompaniesByMascots(Mascot m);
     List<Mascot> getMascotsByCompany(Company c);
     Company addCompany(Company c);
+
 }
