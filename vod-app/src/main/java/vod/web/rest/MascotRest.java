@@ -56,7 +56,7 @@ public class MascotRest {
         }
     }
 
-    @GetMapping("companies/{companyId}/mascot")
+    @GetMapping("companies/{companyId}/mascots")
     ResponseEntity<List<Mascot>> getMascotsByCompany(@PathVariable("companyId") int companyId){
         log.info("about to retrive mascots sold at company {}", companyId);
         Company c = companyService.getCompanyById(companyId);

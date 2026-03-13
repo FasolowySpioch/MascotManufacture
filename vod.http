@@ -31,7 +31,7 @@ GET http://localhost:8080/webapi/mascots
 GET http://localhost:8080/webapi/mascots/1
 
 ### get mascots by companies
-GET http://localhost:8080/webapi/companies/1/mascots
+GET http://localhost:8080/webapi/companies/2/mascots
 
 ### create new mascot
 POST http://localhost:8080/webapi/mascot
