@@ -8,6 +8,8 @@ import org.springframework.cglib.core.Local;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.LocaleResolver;
@@ -71,8 +73,11 @@ public class MascotRest {
     }
 
     @PostMapping("/mascot")
-    ResponseEntity<?> addMascot(@RequestBody MascotDTO mascotDTO){
+    ResponseEntity<?> addMascot(@Valid @RequestBody MascotDTO mascotDTO, Errors errors){
         log.info("about to add new mascot {}", mascotDTO);
+        if(errors.hasErrors()){
+            return ResponseEntity.badRequest().build();
+        }
         Mascot m = new Mascot();
         m.setName(mascotDTO.getName());
         m.setPhoto(mascotDTO.getPhoto());

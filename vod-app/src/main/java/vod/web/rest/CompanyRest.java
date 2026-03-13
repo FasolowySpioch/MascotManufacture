@@ -32,18 +32,23 @@ public class CompanyRest {
     private final LocaleResolver localeResolver;
     private final CompanyValidator companyValidator;
 
-    @InitBinder
-    void initBinder(WebDataBinder binder) {
-        binder.addValidators(companyValidator);
-    }
+//    @InitBinder
+//    void initBinder(WebDataBinder binder) {
+//        binder.addValidators(companyValidator);
+//    }
     @GetMapping("/companies")
     List<Company> getCompanies(@RequestParam(value = "phrase", required = false) String phrase,
                                @RequestHeader(value = "custom-header", required = false) String customHeader,
-                               @CookieValue(value = "some-cookie", required = false) String someCookie) {
+                               @CookieValue(value = "some-cookie", required = false) String someCookie) throws IllegalAccessException {
         log.info("about to fetch companies list");
         log.info("phrase param: {}", phrase);
         log.info("custom header param: {}", customHeader);
         log.info("some cookie value: {}", someCookie);
+
+        if(phrase.equals("foo")){
+            throw new IllegalArgumentException("foo!");
+        }
+
         List<Company> companies = companyService.getAllCompanies();
         log.info("{} companies found. ", companies.size());
         return companies;
