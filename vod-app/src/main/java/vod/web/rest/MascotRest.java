@@ -69,7 +69,7 @@ public class MascotRest {
     }
 
     @PostMapping("/mascot")
-    ResponseEntity<?> addMascot(@Valid @RequestBody MascotDTO mascotDTO, Errors errors){
+    ResponseEntity<?> addMascot(@Validated @RequestBody MascotDTO mascotDTO, Errors errors){
         log.info("about to add new mascot {}", mascotDTO);
         if(errors.hasErrors()){
             return ResponseEntity.badRequest().build();
