@@ -20,9 +20,9 @@ public class CompanyValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors error) {
-
-        Company validateCompany = (Company) target;
-
+        if (!(target instanceof Company validateCompany)) {
+            return;
+        }
         boolean duplicated = cs.getAllCompanies().stream()
                 .anyMatch(company ->
                         company.getName().equalsIgnoreCase(validateCompany.getName()));

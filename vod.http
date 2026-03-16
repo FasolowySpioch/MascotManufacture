@@ -9,7 +9,7 @@ Accept: application/xml
 GET http://localhost:8080/webapi/mascots/1/companies
 
 ###phrase
-GET http://localhost:8080/webapi/companies?phrase=abc
+GET http://localhost:8080/webapi/companies?phrase=foo
 custom-header: custom-value
 Cookie: some-cookie=some-value
 
@@ -40,6 +40,6 @@ Content-Type: application/json
 {
 "name": "Sample",
 "photo": "https://miokiishop.com/cdn/shop/files/356827384_812963570457040_7027744008986053335_n_1946x.jpg?v=1687824844",
-"designerId": 1,
+"designerId": 7,
 "rating": 5
 }
