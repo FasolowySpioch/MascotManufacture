@@ -1,14 +1,10 @@
 package vod.web.rest;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties;
-import org.springframework.cglib.core.Local;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -18,7 +14,6 @@ import vod.service.CompanyService;
 import vod.service.MascotService;
 import vod.web.rest.dto.MascotDTO;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @RestController

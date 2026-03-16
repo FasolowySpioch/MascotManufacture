@@ -1,0 +1,264 @@
+body {
+    text-align: center;
+    font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    margin: 0;
+    background-image: url("https://wallpapercave.com/wp/wp12590777.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    background-color: #ffe6f0;
+}
+
+a {
+    color: #ff4fa3 !important;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+h1 {
+    color: #ff4fa3;
+    font-weight: lighter;
+}
+
+header {
+    font-family: Orbitron;
+}
+
+header a {
+    z-index: 1000;
+}
+
+header h1 {
+    border-right: 3px solid #ffc0da;
+    color: white;
+    background-color: #ff85c2;
+    float: left;
+    margin: 0;
+    padding: 20px 40px;
+    border-radius: 0 20px 20px 0;
+}
+
+strong {
+    color: #ff4fa3;
+}
+
+section {
+    font-size: 1.5em;
+}
+
+header {
+    background-color: #ffd6ec;
+    top: 0;
+    width: 100%;
+    position: fixed;
+    box-shadow: 0px 3px 40px rgba(255, 133, 194, 0.6);
+}
+
+header img {
+    height: 50px;
+    vertical-align: bottom;
+}
+
+header h2 {
+    color: #ff4fa3;
+    font-size: 2em;
+    font-weight: lighter;
+    margin: 0;
+    overflow: hidden;
+    padding: 20px;
+    pointer-events: none;
+    position: fixed;
+    width: 100%;
+}
+
+header h2 span {
+    color: #ff4fa3;
+}
+
+header h3 {
+    float: right;
+    padding-right: 20px;
+    font-weight: normal;
+    color: #ff6bb5;
+}
+
+section {
+    margin-top: 200px;
+}
+
+section table {
+    border-bottom: 10px solid #ff85c2;
+}
+
+table {
+    margin: 0 auto;
+    text-align: center;
+    border-spacing: 0;
+}
+
+td {
+    padding: 20px;
+    font-weight: lighter;
+    font-size: 1.7em;
+}
+
+div#orderTable > table td,
+div#orderTable > table th {
+    font-size: 1.1em;
+    font-weight: lighter;
+    padding: 10px;
+}
+
+th {
+    background-color: #ff85c2;
+    color: white;
+    font-family: Orbitron;
+    font-size: 1.7em;
+    font-weight: normal;
+    padding: 20px;
+}
+
+tr:nth-child(2n+2) td,
+tr:nth-child(2n+2) td a {
+    color: #d63384;
+}
+
+tr td,
+tr td a {
+    color: #d63384;
+    text-align: left;
+}
+
+tr {
+    background-color: rgba(255, 230, 240, 0.9);
+}
+
+tr:nth-child(2n+2) {
+    background-color: rgba(255, 200, 225, 0.6);
+}
+
+td:hover img {
+    transform: scale(1.25);
+    transition: 0.3s;
+}
+
+td img {
+    height: 50px;
+}
+
+.encourage th {
+    color: #ff4fa3;
+}
+
+.link {
+    background-color: #ff85c2;
+    color: white;
+    float: right;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 1px;
+    padding: 5px;
+    border-radius: 10px;
+}F
+
+.link:hover {
+    cursor: pointer;
+    background-color: #ff6bb5;
+}
+
+#totalPrice {
+    float: left;
+}
+
+#orders {
+    bottom: 0;
+    position: fixed;
+    right: 0;
+}
+
+#orderTable {
+    clear: both;
+}
+
+.circle {
+    background-color: #fff;
+    border: 2px solid #ff85c2;
+    border-radius: 50%;
+    font-weight: bolder;
+    height: 20px;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    width: 20px;
+    padding: 3px;
+    font-size: 17px;
+}
+
+#orderTable .circle {
+    background-color: white;
+    border: 2px solid #ff85c2;
+    border-radius: 50%;
+}
+
+.action:hover {
+    cursor: pointer;
+}
+
+section.no-margin {
+    margin-top: 10px;
+}
+
+section.no-margin p {
+    color: #ff4fa3;
+}
+
+.search {
+    background: url(../img/search.png);
+    background-size: contain;
+    padding: 20px;
+    font-size: 0px;
+    text-align: center;
+}
+
+.search-container {
+    text-align: center;
+}
+
+.rating {
+    font-size: 18px;
+    text-align: center;
+}
+
+table a {
+    color: #ff4fa3 !important;
+}
+
+.encourage a {
+    color: #ff4fa3 !important;
+}
+
+footer {
+    bottom: 0;
+    color: #ff4fa3;
+    left: 0;
+    padding: 10px;
+    position: absolute;
+    background-color: rgba(255, 200, 225, 0.6);
+}
+
+footer a {
+    color: #ff4fa3;
+}
+
+.action {
+    background-color: #ff85c2;
+    height: 20px;
+    margin: 0px auto;
+    text-align: center;
+    width: 20px;
+    padding: 3px;
+    font-weight: bold;
+    font-size: 17px;
+    color: white;
+}
