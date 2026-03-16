@@ -1,10 +1,7 @@
 package vod.web.rest;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties;
-import org.springframework.cglib.core.Local;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +17,6 @@ import vod.service.CompanyService;
 import vod.service.MascotService;
 import vod.web.rest.dto.MascotDTO;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @RestController
@@ -73,7 +69,7 @@ public class MascotRest {
     }
 
     @PostMapping("/mascot")
-    ResponseEntity<?> addMascot(@Valid @RequestBody MascotDTO mascotDTO, Errors errors){
+    ResponseEntity<?> addMascot(@Validated @RequestBody MascotDTO mascotDTO, Errors errors){
         log.info("about to add new mascot {}", mascotDTO);
         if(errors.hasErrors()){
             return ResponseEntity.badRequest().build();

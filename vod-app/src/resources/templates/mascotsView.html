@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <name>VOD</name>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <a href="./"><h1>Pix</h1></a>
+    <h2 th:text="${name}"></h2>
+    <h3>
+    </h3>
+</header>
+<section>
+
+    <table>
+        <tr>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Designer</th>
+            <th>Rating</th>
+            <th>Companies</th>
+        </tr>
+        <tr th:each="m : ${mascots}">
+            <td>
+                <img th:src="${m.photo}"/>
+            </td>
+            <td th:text="${m.name}"></td>
+            <td>
+                <a th:href="@{/mascots?designerId={id}(id=${m.designer.id})}"
+                   th:text="${m.designer.firstName} + ' ' + ${m.designer.lastName}"></a>
+            </td>
+            <td class="rating" th:text="${m.rating}"></td>
+            <td class="search-container">
+                <a class="search" th:href="@{/companies?mascotId={id}(id=${m.id})}"></a>
+            </td>
+        </tr>
+    </table>
+
+</section>
+<div id="orders">
+</div>
+<footer>
+    ${tip}
+</footer>
+
+</body>
+</html>
