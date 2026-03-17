@@ -22,7 +22,6 @@ import vod.service.CompanyService;
 import vod.service.MascotService;
 import vod.web.rest.dto.MascotDTO;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 import java.util.Locale;
 
