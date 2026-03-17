@@ -38,4 +38,4 @@ build/
 .DS_Store
 
 # Docker
-mysql/data/
+docker-vod/mysql/data/
