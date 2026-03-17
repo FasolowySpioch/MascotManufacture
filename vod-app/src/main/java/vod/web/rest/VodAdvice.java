@@ -29,4 +29,11 @@ public class VodAdvice {
         log.error("illegal argument provided:", e);
         return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).body(e.getMessage());
     }
+
+    @ExceptionHandler(Exception.class)
+    ResponseEntity<String> handleExcpetion(Exception e){
+        log.error("generic exception", e);
+        return ResponseEntity.status(HttpStatus.LOOP_DETECTED).body(e.getMessage());
+    }
+
 }

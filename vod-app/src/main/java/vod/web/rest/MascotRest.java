@@ -1,6 +1,8 @@
 package vod.web.rest;
 
 import jakarta.validation.Valid;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties;
@@ -22,6 +24,7 @@ import vod.web.rest.dto.MascotDTO;
 
 import javax.swing.text.html.parser.Entity;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,6 +35,7 @@ public class MascotRest {
     private final MascotService mascotService;
     private final MessageSource messageSource;
     private final LocaleResolver localeResolver;
+    private final MascotValidator mascotValidator;
     //private final CompanyValidator companyValidator;
 
     //@InitBinder
@@ -73,10 +77,22 @@ public class MascotRest {
     }
 
     @PostMapping("/mascot")
-    ResponseEntity<?> addMascot(@Valid @RequestBody MascotDTO mascotDTO, Errors errors){
+    ResponseEntity<?> addMascot(@Valid @RequestBody MascotDTO mascotDTO, Errors e, HttpServletRequest request){
         log.info("about to add new mascot {}", mascotDTO);
-        if(errors.hasErrors()){
-            return ResponseEntity.badRequest().build();
+
+        //mascotValidator.validate(mascotDTO, errors);
+
+        if (e.hasErrors()) {
+            Locale locale = localeResolver.resolveLocale(request);
+
+            String em = e.getAllErrors().stream().map(oe -> messageSource.getMessage(
+                    oe.getCode(),
+                    oe.getArguments(),
+                    oe.getDefaultMessage(),
+                    locale
+            )).reduce("errors:\n", (acc, msg)->acc+msg+"\n");
+
+            return ResponseEntity.badRequest().body(em);
         }
         Mascot m = new Mascot();
         m.setName(mascotDTO.getName());

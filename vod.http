@@ -40,6 +40,6 @@ Content-Type: application/json
 {
 "name": "Sample",
 "photo": "https://miokiishop.com/cdn/shop/files/356827384_812963570457040_7027744008986053335_n_1946x.jpg?v=1687824844",
-"designerId": 7,
+"designerId": 2,
 "rating": 5
 }
