@@ -24,7 +24,7 @@ public class MemMascotDao implements MascotDao {
     }
     @Override
     public List<Mascot> findByCompany(Company c) {
-        return SampleData.mascots.stream().filter(mascot -> mascot.getCompanyArrayList().contains(c)).collect(Collectors.toList());
+        return SampleData.mascots.stream().filter(mascot -> mascot.getcompanies().contains(c)).collect(Collectors.toList());
     }
     @Override
     public Mascot add(Mascot m) {
