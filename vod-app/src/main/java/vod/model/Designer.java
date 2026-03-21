@@ -1,14 +1,19 @@
 package vod.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Designer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String firstName;
     private String lastName;
+    @OneToMany(mappedBy = "designer")
     @JsonIgnore
     private List<Mascot> mascotList = new ArrayList<>();
     public Designer() {}
@@ -59,7 +64,7 @@ public class Designer {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", mascotsCount=" + mascotList.size() +
+                ", mascotsCount=" + (mascotList != null ? mascotList.size() : 0)+
                 '}';
     }
 }
