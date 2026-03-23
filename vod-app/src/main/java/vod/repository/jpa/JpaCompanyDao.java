@@ -11,7 +11,6 @@ import vod.repository.CompanyDao;
 import java.util.List;
 
 @Repository
-@Primary
 public class JpaCompanyDao implements CompanyDao {
     @PersistenceContext
     private EntityManager entityManager;
