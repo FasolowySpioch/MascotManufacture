@@ -11,7 +11,6 @@ import vod.repository.MascotDao;
 
 import java.util.List;
 @Repository
-@Primary
 public class JpaMascotDao implements MascotDao {
     @PersistenceContext
     private EntityManager entityManager;
