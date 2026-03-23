@@ -1,5 +1,6 @@
 package vod.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 
 @Service
 @Scope("prototype")
+@RequiredArgsConstructor
 public class CompanyServiceBean implements CompanyService {
     private static final Logger log = Logger.getLogger(CompanyService.class.getName());
 
