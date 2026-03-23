@@ -1,8 +1,11 @@
 package vod.repository.data;
 
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import vod.model.Company;
 import vod.model.Designer;
 import vod.model.Mascot;
@@ -25,6 +28,8 @@ public class DataMascotDao implements MascotDao {
     public List<Mascot> findByDesigner(Designer d){return repository.findAllByDesigner(d); }
     @Override
     public List<Mascot> findByCompany(Company c){return repository.findAllByCompaniesContaining(c); }
+
+    @Transactional(propagation = Propagation.MANDATORY)
     @Override
     public Mascot add(Mascot m){ return repository.save(m); }
 }
