@@ -1,9 +1,10 @@
 ### get all companies
 GET http://localhost:8080/webapi/companies
+Authorization: Basic dbuser3 dbuser3
 
 ### get companies by id
 GET http://localhost:8080/webapi/companies/1
-Accept: application/xml
+Authorization: Basic dbuser3 dbuser3
 
 ### get companies by mascot id
 GET http://localhost:8080/webapi/mascots/1/companies
@@ -13,13 +14,16 @@ GET http://localhost:8080/webapi/companies?phrase=foo
 custom-header: custom-value
 Cookie: some-cookie=some-value
 
+
+
 ### create new company
 POST http://localhost:8080/webapi/companies
 Content-Type: application/json
 Accept-Language: pl
+Authorization: Basic dbuser1 dbuser1
 
 {
-  "name": "sample",
+  "name": "sample3",
   "logoUrl": "https://imgs.search.brave.com/qTfuCMXCtl5AczPIqQL_QshuCPsyi1TSB_QOV_sWQ8Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuYm9yZWRwYW5k/YS5jb20vYmxvZy93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyNC8x/Mi8yMi02NzRmMWJi/MDNhYjI1X183MDAu/anBn"
 }
 
@@ -36,6 +40,7 @@ GET http://localhost:8080/webapi/companies/2/mascots
 ### create new mascot
 POST http://localhost:8080/webapi/mascot
 Content-Type: application/json
+Authorization: Basic dbuser1 dbuser1
 
 {
 "name": "Gojo Satoru Plush",

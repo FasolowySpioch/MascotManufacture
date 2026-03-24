@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +45,7 @@ public class CompanyRest {
         log.info("custom header param: {}", customHeader);
         log.info("some cookie value: {}", someCookie);
 
-        if(phrase.equals("foo")){
+        if("foo".equals(phrase)){
             throw new IllegalArgumentException("foo!");
         }
 
@@ -92,6 +94,10 @@ public class CompanyRest {
 
             return ResponseEntity.badRequest().body(em);
         }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        log.info("authentication : {}", authentication);
+        log.info("authentication name: {}", authentication.getName());
 
         c = companyService.addCompany(c);
         log.info("new company added {}: ", c);

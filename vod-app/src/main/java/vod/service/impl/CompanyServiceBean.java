@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import vod.model.Company;
@@ -16,7 +17,6 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Service
-@Scope("prototype")
 @RequiredArgsConstructor
 public class CompanyServiceBean implements CompanyService {
     private static final Logger log = Logger.getLogger(CompanyService.class.getName());
@@ -60,6 +60,7 @@ public class CompanyServiceBean implements CompanyService {
         log.info("searching mascots by company");
         return mascotDao.findByCompany(c);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @Override
     public Company addCompany(Company c){
         log.info("adding new company");
